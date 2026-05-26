@@ -16,22 +16,39 @@ gmailButton.onclick = () => {
 
 
 const childBlock = document.querySelector('.child_block');
-x = 0;
-y = 0;
-direction = "right";
-function animate () {
-    if (direction === 'right') { x++ };
-    if (direction === 'down') { y++ };
-    if (direction === "left") { x-- };
-    if (direction === "up") { y-- };
 
-    if ( direction === 'right' &&  x >= 449 ){ direction = "down" }
-    else if ( direction === 'down' &&  y >= 449 ){ direction = "left" }
-    else if ( direction === 'left' && x <= 0){ direction = "up" }
-    else if ( direction === 'up' && x <= 0 ){ direction = "right" };
+let x = 0;
+let y = 0;
+let direction = "right";
+
+function animate() {
+
+    if (direction === 'right') x++;
+    else if (direction === 'down') y++;
+    else if (direction === 'left') x--;
+    else if (direction === 'up') y--;
+
+    if (direction === 'right' && x >= 449) {
+        x = 449;
+        direction = "down";
+    }
+    else if (direction === 'down' && y >= 449) {
+        y = 449;
+        direction = "left";
+    }
+    else if (direction === 'left' && x <= 0) {
+        x = 0;
+        direction = "up";
+    }
+    else if (direction === 'up' && y <= 0) {
+        y = 0;
+        direction = "right";
+    }
 
     childBlock.style.left = x + "px";
-    childBlock.style.top = y + "px"; 
+    childBlock.style.top = y + "px";
+
     requestAnimationFrame(animate);
 }
+
 requestAnimationFrame(animate);
