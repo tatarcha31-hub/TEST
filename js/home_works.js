@@ -52,3 +52,30 @@ function animate() {
 }
 
 requestAnimationFrame(animate);
+
+
+const startBtn = document.querySelector('#start');
+const stopBtn = document.querySelector('#stop');
+const resetBtn = document.querySelector('#reset');
+const secondsEl = document.querySelector('#seconds');
+
+let second = 0;
+let timer = null;
+
+startBtn.addEventListener('click', () => {
+    if (timer) return
+    timer = setInterval(() => {
+        second++;
+        secondsEl.textContent = second;
+    }, 1000);
+});
+stopBtn.addEventListener('click', () => {
+    clearInterval(timer);
+    timer = null;
+})
+resetBtn.addEventListener('click', () => {
+    clearInterval(timer);
+    timer = null;
+    second = 0;
+    secondsEl.textContent = second;
+})
