@@ -79,3 +79,53 @@ resetBtn.addEventListener('click', () => {
     second = 0;
     secondsEl.textContent = second;
 })
+
+const xhr = new XMLHttpRequest();
+
+xhr.open("GET", "../data/bio.json");
+
+xhr.onload = function () {
+  if (xhr.status !== 200) {
+    console.log("Ошибка загрузки:", xhr.status);
+    return;
+  }
+
+  const data = JSON.parse(xhr.responseText);
+  console.log(data);
+};
+
+xhr.onerror = function () {
+  console.log("Сетевая ошибка");
+};
+
+xhr.send();
+
+async function getArrayGraplingChampion() {
+    try{
+        const response = await fetch('../data/characters.json');
+
+        if (!response.ok){
+            throw new Error("Ошибка сервера");
+        }
+
+        const users = await response.json();
+
+        const list = document.querySelector('.characters-list');
+
+        users.forEach((element, index) => {
+            const card = document.createElement('div');
+            card.classList.add('character-card')
+            card.innerHTML = `<div class="character-photo">
+                              <img src="${element.photo}" alt="${element.name}"></img>
+                              </div>
+                              <h3>${element.name}</h3>
+                              <h3>${element.age}</h3>`
+
+            list.append(card);
+        });
+
+    } catch (error) {
+        console.log(error);
+    }
+}
+getArrayGraplingChampion();
