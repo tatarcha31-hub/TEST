@@ -51,7 +51,7 @@ const rubInput = document.querySelector('#rub');
 
 const getRates = () => {
     const request = new XMLHttpRequest();
-    request.open('GET', '/data/converter.json');
+    request.open('GET', './data/converter.json');
     request.send();
 
     request.onload = () => {
