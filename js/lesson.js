@@ -110,7 +110,7 @@ const getRates = () => {
             };
 
             rubInput.oninput = () => {
-                if (rubInput,value = ''){
+                if (rubInput.value = ''){
                     somInput.value = '';
                     usdInput.value = '';
                     eurInput.value = '';
@@ -127,7 +127,7 @@ const getRates = () => {
             };
             
             cnyInput.oninput = () => {
-                if (rubInput,value = ''){
+                if (rubInput.value = ''){
                     somInput.value = '';
                     usdInput.value = '';
                     eurInput.value = '';
