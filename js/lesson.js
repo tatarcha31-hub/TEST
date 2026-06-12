@@ -15,7 +15,6 @@ phoneButton.onclick = () => {
     }
 }
 
-
 const tabsParent = document.querySelector('.tab_content_items');
 const tabBtns = document.querySelectorAll('.tab_content_item');
 const tabBlocks = document.querySelectorAll('.tab_content_block');
@@ -48,10 +47,11 @@ const eurInput = document.querySelector('#eur');
 const errorText = document.querySelector('#error');
 const cnyInput = document.querySelector('#cny');
 const rubInput = document.querySelector('#rub');
+const kgzInput = document.querySelector('#kgz');
 
 const getRates = () => {
     const request = new XMLHttpRequest();
-    request.open('GET', './data/converter.json');
+    request.open('GET', '../data/converter.json');
     request.send();
 
     request.onload = () => {
@@ -61,6 +61,7 @@ const getRates = () => {
             const eurRate = data.euro;
             const rubRate = data.rub;
             const cnyRate = data.cny;
+            const kgzRate = data.kgz;
 
             somInput.oninput = () => {
                 if (somInput.value === '') {
@@ -68,6 +69,7 @@ const getRates = () => {
                     eurInput.value = '';
                     cnyInput.value = '';
                     rubInput.value = '';
+                    kgzInput.value = '';
                     return;
                 }
 
@@ -75,6 +77,7 @@ const getRates = () => {
                 eurInput.value = (somInput.value / eurRate).toFixed(2);
                 cnyInput.value = (somInput.value / cnyRate).toFixed(2);
                 rubInput.value = (somInput.value / rubRate).toFixed(2);
+                kgzInput.value = (somInput.value / kgzRate).toFixed(2);
             };
 
             usdInput.oninput = () => {
@@ -83,6 +86,7 @@ const getRates = () => {
                     eurInput.value = '';
                     cnyInput.value = '';
                     rubInput.value = '';
+                    kgzInput.value = '';
                     return;
                 }
 
@@ -90,7 +94,8 @@ const getRates = () => {
                 somInput.value = som.toFixed(2);
                 eurInput.value = (som / eurRate).toFixed(2);
                 rubInput.value = (som / rubRate).toFixed(2);
-                cnyInput.value = (som / cnyInput).toFixed(2);
+                cnyInput.value = (som / cnyRate).toFixed(2);
+                kgzInput.value = (som / kgzRate).toFixed(2);
             };
 
             eurInput.oninput = () => {
@@ -99,6 +104,7 @@ const getRates = () => {
                     usdInput.value = '';
                     cnyInput.value = '';
                     rubInput.value = '';
+                    kgzInput.value = '';
                     return;
                 }
 
@@ -107,15 +113,17 @@ const getRates = () => {
                 usdInput.value = (som / usdRate).toFixed(2);
                 rubInput.value = (som / rubRate).toFixed(2);
                 cnyInput.value = (som / cnyRate).toFixed(2);
+                kgzInput.value = (som / kgzRate).toFixed(2);
             };
 
             rubInput.oninput = () => {
-                if (rubInput.value = ''){
+                if (rubInput.value === ''){
                     somInput.value = '';
                     usdInput.value = '';
                     eurInput.value = '';
                     rubInput.value = '';
                     cnyInput.value = '';
+                    kgzInput.value = '';
                     return;
                 }
 
@@ -124,14 +132,16 @@ const getRates = () => {
                 usdInput.value = (som / usdRate).toFixed(2);
                 eurInput.value = (som / eurRate).toFixed(2);
                 cnyInput.value = (som / cnyRate).toFixed(2);
+                kgzInput.value = (som / kgzRate).toFixed(2);
             };
             
             cnyInput.oninput = () => {
-                if (rubInput.value = ''){
+                if (cnyInput.value === ''){
                     somInput.value = '';
                     usdInput.value = '';
                     eurInput.value = '';
                     rubInput.value = '';
+                    kgzInput.value = '';
                     cnyInput.value = '';
                     return;
                 }
@@ -140,6 +150,26 @@ const getRates = () => {
                 somInput.value = som.toFixed(2);
                 usdInput.value = (som / usdRate).toFixed(2);
                 eurInput.value = (som / eurRate).toFixed(2);
+                rubInput.value = (som / rubRate).toFixed(2);
+                kgzInput.value = (som / kgzRate).toFixed(2);
+            };
+
+            kgzInput.oninput = () => {
+                if(kgzInput.value === ''){
+                    somInput.value = '';
+                    usdInput.value = '';
+                    eurInput.value = '';
+                    cnyInput.value = '';
+                    rubInput.value = '';
+                    kgzInput.value = '';
+                    return; 
+                }
+
+                const som = kgzInput.value * kgzRate;
+                somInput.value = som.toFixed(2);
+                usdInput.value = ( som / usdRate).toFixed(2);
+                eurInput.value = (som / eurRate).toFixed(2);
+                cnyInput.value = (som / cnyRate).toFixed(2);
                 rubInput.value = (som / rubRate).toFixed(2);
             };
 
@@ -156,3 +186,4 @@ const getRates = () => {
 };
 
 getRates();
+
