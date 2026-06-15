@@ -174,14 +174,14 @@ const getRates = () => {
             };
 
         } else {
-            errorText.style.color = 'red';
-            errorText.textContent = 'Произошла ошибка на сервере';
+            errorText.style.color = "red";
+            errorText.textContent = "Произошла ошибка на сервере";
         }
     };
 
     request.onerror = () => {
-        errorText.style.color = 'red';
-        errorText.textContent = 'Ошибка соединения';
+        errorText.style.color = "red";
+        errorText.textContent = "Ошибка соединения";
     };
 };
 
