@@ -187,3 +187,62 @@ const getRates = () => {
 
 getRates();
 
+
+
+
+const btnNext = document.querySelector('#btn-next');
+const btnPrev = document.querySelector('#btn-prev');
+const cardtodo = document.querySelector('.card');
+
+let count = 1;
+
+function getTodo(id) {
+    fetch(`https://jsonplaceholder.typicode.com/todos/${id}`)
+        .then(response => response.json())
+        .then(data => {
+            const { id, title, completed } = data;
+
+            cardtodo.style.borderColor = completed ? 'green' : 'red';
+
+            cardtodo.innerHTML = `
+                <p>ID: ${id}</p>
+                <p>${title}</p>
+                <p>${completed ? 'Completed' : 'Not completed'}</p>
+            `;
+        });
+}
+
+btnNext.addEventListener('click', () => {
+    if (count === 200) {
+        count = 1;
+    } else {
+        count++;
+    }
+
+    getTodo(count);
+});
+
+btnPrev.addEventListener('click', () => {
+    if (count === 1) {
+        count = 200;
+    } else {
+        count--;
+    }
+
+    getTodo(count);
+});
+
+getTodo(count);
+
+async function getPosts() {
+    try {
+        const response = await fetch('https://jsonplaceholder.typicode.com/posts');
+        const data = await response.json();
+
+        console.log(data);
+    } catch (error) {
+        console.error('Ошибка:', error);
+    }
+}
+
+getPosts();
