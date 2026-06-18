@@ -1,0 +1,104 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #c2d0d0;
+}
+
+/* контейнер */
+.container {
+    width: 1200px;
+    margin: 0 auto;
+}
+
+/* кнопка */
+.btn {
+    width: 250px;
+    height: 50px;
+    font-size: 20px;
+    cursor: pointer;
+    border: 1px solid orange;
+    background: black;
+    color: orange;
+    border-radius: 8px;
+}
+
+.btn:hover {
+    background: #414349;
+}
+
+.btn:active {
+    background: #56585D;
+}
+
+/* ссылки */
+a {
+    text-decoration: none;
+    color: white;
+}
+
+li {
+    list-style: none;
+}
+
+/* HEADER */
+.header {
+    background: #222;
+    color: white;
+    padding: 20px 0;
+}
+
+.inner_header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* меню */
+.menu {
+    display: flex;
+    gap: 20px;
+}
+
+.menu_link a {
+    color: white;
+    font-size: 16px;
+}
+
+.menu_link a:hover {
+    color: orange;
+}
+
+/* POSTS */
+.posts-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    padding: 20px;
+}
+
+/* карточка */
+.card {
+    border: 1px solid #ddd;
+    padding: 15px;
+    border-radius: 10px;
+    background: white;
+}
+
+.card img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+/* FOOTER */
+.footer {
+    background: #222;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    margin-top: 20px;
+}

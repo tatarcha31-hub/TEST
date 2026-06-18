@@ -41,6 +41,10 @@ setInterval(() => {
     selectTab(curuentIndex);
 }, 3000);
 
+
+
+
+
 const somInput = document.querySelector('#som');
 const usdInput = document.querySelector('#usd');
 const eurInput = document.querySelector('#eur');
@@ -190,6 +194,7 @@ getRates();
 
 
 
+
 const btnNext = document.querySelector('#btn-next');
 const btnPrev = document.querySelector('#btn-prev');
 const cardtodo = document.querySelector('.card');
@@ -246,3 +251,6 @@ async function getPosts() {
 }
 
 getPosts();
+
+
+
